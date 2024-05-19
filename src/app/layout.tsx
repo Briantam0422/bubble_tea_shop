@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "@/styles/globals.css";
 import MaterialUiProvider from "@/providers/MaterialUiProvider";
 import TanStackQueryProvider from "@/providers/TanStackQueryProvider";
+import ReduxStoreProvider from "@/providers/ReduxStoreProvider";
 
 export type RootLayoutProps = Readonly<{
   children: React.ReactNode;
@@ -24,7 +25,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <TanStackQueryProvider>
-          <MaterialUiProvider>{children}</MaterialUiProvider>
+          <ReduxStoreProvider>
+            <MaterialUiProvider>{children}</MaterialUiProvider>
+          </ReduxStoreProvider>
         </TanStackQueryProvider>
       </body>
     </html>
