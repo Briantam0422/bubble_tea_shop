@@ -4,7 +4,7 @@ import "@/styles/globals.css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { ThemeProvider } from "@emotion/react";
 import theme from "@/styles/mui/theming";
-import MaterialUiProvider from "@/Providers/MaterialUiProvider";
+import MaterialUiProvider from "@/providers/MaterialUiProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
