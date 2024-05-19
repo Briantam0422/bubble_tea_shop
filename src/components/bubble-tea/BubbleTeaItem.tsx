@@ -10,9 +10,12 @@ type BubbleTeaProps = {
 export function BubbleTeaItem({ item }: BubbleTeaProps) {
   return (
     <Card variant="outlined" className="hover:shadow-lg">
-      <BubbleTeaCardImage
-        path={item && item.assetPath ? item.assetPath : "no-image.png"}
-      />
+      <div className="hidden sm:block">
+        <BubbleTeaCardImage
+          path={item && item.assetPath ? item.assetPath : "no-image.png"}
+        />
+      </div>
+
       <CardContent>
         <BubbleTeaItemInfo item={item} />
       </CardContent>
