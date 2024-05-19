@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/styles/globals.css";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
+import { ThemeProvider } from "@emotion/react";
+import theme from "@/styles/mui/theming";
+import MaterialUiProvider from "@/Providers/MaterialUiProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <MaterialUiProvider>{children}</MaterialUiProvider>
+      </body>
     </html>
   );
 }
