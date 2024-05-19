@@ -6,6 +6,7 @@ import {
 } from "@/store/shopping-cart/ShoppingCartSlice";
 import { Avatar, Button, Grid } from "@mui/material";
 import { createNewOrderObject } from "../../store/shopping-cart/ShoppingCartSlice";
+import { toast } from "react-toastify";
 
 type BubbleTeaItemInfoProps = {
   item: iBubbleTea;
@@ -21,6 +22,7 @@ export default function BubbleTeaItemInfo({
     const newOrder = createNewOrderObject(item);
     store.dispatch(addOrder(newOrder));
     store.dispatch(calculateTotalPrice());
+    toast.success("Nice Choice ! We have added it to your cart");
   };
   return (
     <Grid container rowSpacing={1}>

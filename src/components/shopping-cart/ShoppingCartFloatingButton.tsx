@@ -3,6 +3,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useState } from "react";
 import { useAppSelector } from "@/store/hooks";
 import ShoppingCartDrawer from "./ShoppingCartDrawer";
+import { toast } from "react-toastify";
 
 export default function ShoppingCartFloatingButton() {
   const [openShoppingCart, setOpenShoppingCart] = useState<boolean>(false);
@@ -11,7 +12,7 @@ export default function ShoppingCartFloatingButton() {
     if (shoppingCart.orders.length > 0) {
       setOpenShoppingCart(!openShoppingCart);
     } else {
-      console.log("");
+      toast("Hey! Please select your favorite bubble tea first.");
     }
   };
   return (

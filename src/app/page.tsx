@@ -7,6 +7,8 @@ import { iBubbleTea } from "@/model/BubbleTea";
 import { Grid } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Home() {
   const [bubbleTeaLabels, setBubbleTeaLabels] =
@@ -38,6 +40,7 @@ export default function Home() {
 
   return (
     <main>
+      <ToastContainer position="top-center" />
       <div className="relative">
         <Grid container className="p-10">
           {bubbleTeaLabels && bubbleTeaList && (
