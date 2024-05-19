@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/styles/globals.css";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
-import { ThemeProvider } from "@emotion/react";
-import theme from "@/styles/mui/theming";
 import MaterialUiProvider from "@/providers/MaterialUiProvider";
+import TanStackQueryProvider from "@/providers/TanStackQueryProvider";
+
+export type RootLayoutProps = Readonly<{
+  children: React.ReactNode;
+}>;
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <MaterialUiProvider>{children}</MaterialUiProvider>
+        <TanStackQueryProvider>
+          <MaterialUiProvider>{children}</MaterialUiProvider>
+        </TanStackQueryProvider>
       </body>
     </html>
   );
