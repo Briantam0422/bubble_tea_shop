@@ -1,17 +1,24 @@
 "use client";
-import { getBubbleTeaList } from "@/api/BubbleTea";
+import { getBubbleTeaLabels, getBubbleTeaList } from "@/api/BubbleTea";
 import BubbleTeaList from "@/components/bubble-tea/BubbleTeaList";
-import SearchBar from "@/components/bubble-tea/SearchBar";
 import { iBubbleTea } from "@/model/BubbleTea";
-import { Divider, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [bubbleTeaList, setBubbleTeaList] = useState<iBubbleTea[]>([]);
+  const [bubbleTeaLabels, setBubbleTeaLabels] =
+    useState<Record<string, string>>();
+  const [bubbleTeaList, setBubbleTeaList] = useState<
+    Partial<Record<string, iBubbleTea[]>>
+  >({});
   const fetchData = async () => {
-    const bubbleTeaList: iBubbleTea[] = await getBubbleTeaList();
+    const bubbleTeaList: Partial<Record<string, iBubbleTea[]>> =
+      await getBubbleTeaList();
     setBubbleTeaList(bubbleTeaList);
+    const bubbleTeaLabels: Record<string, string> = await getBubbleTeaLabels();
+    setBubbleTeaLabels(bubbleTeaLabels);
     console.log(bubbleTeaList);
+    console.log(bubbleTeaLabels);
   };
 
   useEffect(() => {
@@ -20,12 +27,10 @@ export default function Home() {
 
   return (
     <main>
-      <Grid container className="p-10 md:p-20">
-        <SearchBar />
-      </Grid>
-      <Divider />
-      <Grid container className="p-10 md:p-20">
-        <BubbleTeaList data={bubbleTeaList} />
+      <Grid container className="p-10">
+        {bubbleTeaLabels && bubbleTeaList && (
+          <BubbleTeaList data={bubbleTeaList} labels={bubbleTeaLabels} />
+        )}
       </Grid>
     </main>
   );
