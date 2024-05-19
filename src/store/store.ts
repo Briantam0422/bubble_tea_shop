@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { shoppingCartReducer } from './shopping-cart/ShoppingCartSlice'
+import { bubbleTeaReducer } from './bubble-tea/bubbleTeaListSlice'
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
+      bubbleTea: bubbleTeaReducer,
       shoppingCart: shoppingCartReducer
     },
     middleware: (getDefaultMiddleware) =>

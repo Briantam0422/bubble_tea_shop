@@ -26,7 +26,7 @@ export function createNewOrderObject(bubbleTea: iBubbleTea){
 }
 
 export const shoppingCartSlice = createSlice({
-  name: "auth",
+  name: "shoppingCart",
   initialState,
   reducers: {
     addOrder: (state, action: PayloadAction<iShoppingCartOrder>) => {

@@ -7,7 +7,3 @@ export interface iBubbleTea {
     price: number,
     labels: string[]
 }
-
-export interface iBubbleTeaList {
-    label: Partial<Record<string, iBubbleTea[]>>
-}

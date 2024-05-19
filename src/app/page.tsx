@@ -3,25 +3,24 @@ import { getBubbleTeaLabels, getBubbleTeaList } from "@/api/BubbleTea";
 import BubbleTeaList from "@/components/bubble-tea/BubbleTeaList";
 import Loading from "@/components/Loading";
 import ShoppingCartFloatingButton from "@/components/shopping-cart/ShoppingCartFloatingButton";
-import { iBubbleTea } from "@/model/BubbleTea";
+import {
+  setBubbleTeaGroupByLabels,
+  setBubbleTeaLabels,
+} from "@/store/bubble-tea/bubbleTeaListSlice";
+import { useAppSelector, useAppStore } from "@/store/hooks";
 import { Grid } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Home() {
-  const [bubbleTeaLabels, setBubbleTeaLabels] =
-    useState<Record<string, string>>();
-  const [bubbleTeaList, setBubbleTeaList] = useState<
-    Partial<Record<string, iBubbleTea[]>>
-  >({});
-
+  const store = useAppStore();
+  const bubbleTeaState = useAppSelector((state) => state.bubbleTea);
   const queryBubbleTeaList = useQuery({
     queryKey: ["bubble-tea"],
     queryFn: async () => {
       const data = await getBubbleTeaList();
-      setBubbleTeaList(data);
+      store.dispatch(setBubbleTeaGroupByLabels(data));
       return data;
     },
   });
@@ -30,7 +29,7 @@ export default function Home() {
     queryKey: ["bubble-tea-labels"],
     queryFn: async () => {
       const data = await getBubbleTeaLabels();
-      setBubbleTeaLabels(data);
+      store.dispatch(setBubbleTeaLabels(data));
       return data;
     },
   });
@@ -43,9 +42,14 @@ export default function Home() {
       <ToastContainer position="top-center" />
       <div className="relative">
         <Grid container className="p-10">
-          {bubbleTeaLabels && bubbleTeaList && (
-            <BubbleTeaList data={bubbleTeaList} labels={bubbleTeaLabels} />
-          )}
+          {bubbleTeaState &&
+            bubbleTeaState.bubbleTeaLabels &&
+            bubbleTeaState.bubbleTeaGroupByLabels && (
+              <BubbleTeaList
+                data={bubbleTeaState.bubbleTeaGroupByLabels}
+                labels={bubbleTeaState.bubbleTeaLabels}
+              />
+            )}
         </Grid>
         <ShoppingCartFloatingButton />
       </div>

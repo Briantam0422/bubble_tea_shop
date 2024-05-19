@@ -1,6 +1,5 @@
-import { iBubbleTea, iBubbleTeaList } from "@/model/BubbleTea";
+import { iBubbleTea } from "@/model/BubbleTea";
 import data from "./data.json"
-import { resolve } from "path";
 export async function getBubbleTeaList() {
     // simulate api call
     return new Promise<Partial<Record<string, iBubbleTea[]>>>((resolve, reject)=>{
