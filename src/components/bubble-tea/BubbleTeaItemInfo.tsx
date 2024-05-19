@@ -1,5 +1,5 @@
 import { iBubbleTea } from "@/model/BubbleTea";
-import { Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 
 type BubbleTeaItemInfoProps = {
   item: iBubbleTea;
@@ -18,6 +18,11 @@ export default function BubbleTeaItemInfo({ item }: BubbleTeaItemInfoProps) {
       </Grid>
       <Grid item xs={12}>
         <p className="text-gray-500 text-sm">{item.description}</p>
+      </Grid>
+      <Grid item xs={12}>
+        <Button variant="text" style={{ padding: 0 }} color="warning">
+          Add To Cart
+        </Button>
       </Grid>
     </Grid>
   );
