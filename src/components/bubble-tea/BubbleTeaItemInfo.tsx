@@ -1,11 +1,19 @@
 import { iBubbleTea } from "@/model/BubbleTea";
+import { useAppStore } from "@/store/hooks";
+import { addOrder } from "@/store/shopping-cart/ShoppingCartSlice";
 import { Avatar, Button, Grid } from "@mui/material";
+import { createNewOrderObject } from "../../store/shopping-cart/ShoppingCartSlice";
 
 type BubbleTeaItemInfoProps = {
   item: iBubbleTea;
 };
 
 export default function BubbleTeaItemInfo({ item }: BubbleTeaItemInfoProps) {
+  const store = useAppStore();
+  const onClickAddToCart = async () => {
+    const newOrder = createNewOrderObject(item);
+    store.dispatch(addOrder(newOrder));
+  };
   return (
     <Grid container rowSpacing={1}>
       <Grid item xs={8} sm={8} md={12}>
@@ -22,7 +30,11 @@ export default function BubbleTeaItemInfo({ item }: BubbleTeaItemInfoProps) {
             <p className="text-gray-500 text-sm">{item.description}</p>
           </Grid>
           <Grid item xs={12}>
-            <Button variant="text" style={{ padding: 0 }} color="warning">
+            <Button
+              variant="text"
+              style={{ padding: 0 }}
+              color="warning"
+              onClick={onClickAddToCart}>
               Add To Cart
             </Button>
           </Grid>

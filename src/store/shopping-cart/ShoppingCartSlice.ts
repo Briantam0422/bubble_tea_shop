@@ -16,6 +16,15 @@ const initialState: iShoppingCart = {
     totalPrice: 0
 };
 
+export function createNewOrderObject(bubbleTea: iBubbleTea){
+    const newOrderObject: iShoppingCartOrder = {
+        id: new Date().getMilliseconds().toString(),
+        bubbleTea: bubbleTea,
+        quantity: 1,
+    };
+    return newOrderObject;
+}
+
 export const shoppingCartSlice = createSlice({
   name: "auth",
   initialState,
