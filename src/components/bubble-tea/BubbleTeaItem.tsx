@@ -5,9 +5,10 @@ import BubbleTeaItemInfo from "./BubbleTeaItemInfo";
 
 type BubbleTeaProps = {
   item: iBubbleTea;
+  showBtnAddCart: boolean;
 };
 
-export function BubbleTeaItem({ item }: BubbleTeaProps) {
+export function BubbleTeaItem({ item, showBtnAddCart }: BubbleTeaProps) {
   return (
     <Card variant="outlined" className="hover:shadow-lg">
       <div className="hidden sm:block">
@@ -15,11 +16,9 @@ export function BubbleTeaItem({ item }: BubbleTeaProps) {
           path={item && item.assetPath ? item.assetPath : "no-image.png"}
         />
       </div>
-
       <CardContent>
-        <BubbleTeaItemInfo item={item} />
+        <BubbleTeaItemInfo item={item} showBtnAddCart={showBtnAddCart} />
       </CardContent>
-      <CardActions></CardActions>
     </Card>
   );
 }

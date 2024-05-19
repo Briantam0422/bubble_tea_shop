@@ -54,5 +54,5 @@ export const shoppingCartSlice = createSlice({
   },
 });
 
-export const { addOrder, updateOrder, deleteOrder } = shoppingCartSlice.actions;
+export const { addOrder, updateOrder, deleteOrder, calculateTotalPrice } = shoppingCartSlice.actions;
 export const shoppingCartReducer = shoppingCartSlice.reducer;

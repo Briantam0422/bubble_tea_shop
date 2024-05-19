@@ -1,18 +1,26 @@
 import { iBubbleTea } from "@/model/BubbleTea";
 import { useAppStore } from "@/store/hooks";
-import { addOrder } from "@/store/shopping-cart/ShoppingCartSlice";
+import {
+  addOrder,
+  calculateTotalPrice,
+} from "@/store/shopping-cart/ShoppingCartSlice";
 import { Avatar, Button, Grid } from "@mui/material";
 import { createNewOrderObject } from "../../store/shopping-cart/ShoppingCartSlice";
 
 type BubbleTeaItemInfoProps = {
   item: iBubbleTea;
+  showBtnAddCart: boolean;
 };
 
-export default function BubbleTeaItemInfo({ item }: BubbleTeaItemInfoProps) {
+export default function BubbleTeaItemInfo({
+  item,
+  showBtnAddCart,
+}: BubbleTeaItemInfoProps) {
   const store = useAppStore();
   const onClickAddToCart = async () => {
     const newOrder = createNewOrderObject(item);
     store.dispatch(addOrder(newOrder));
+    store.dispatch(calculateTotalPrice());
   };
   return (
     <Grid container rowSpacing={1}>
@@ -29,15 +37,17 @@ export default function BubbleTeaItemInfo({ item }: BubbleTeaItemInfoProps) {
           <Grid item xs={12}>
             <p className="text-gray-500 text-sm">{item.description}</p>
           </Grid>
-          <Grid item xs={12}>
-            <Button
-              variant="text"
-              style={{ padding: 0 }}
-              color="warning"
-              onClick={onClickAddToCart}>
-              Add To Cart
-            </Button>
-          </Grid>
+          {showBtnAddCart && (
+            <Grid item xs={12}>
+              <Button
+                variant="text"
+                style={{ padding: 0 }}
+                color="warning"
+                onClick={onClickAddToCart}>
+                Add To Cart
+              </Button>
+            </Grid>
+          )}
         </Grid>
       </Grid>
       <Grid item xs={4} sm={4} className="block sm:hidden">

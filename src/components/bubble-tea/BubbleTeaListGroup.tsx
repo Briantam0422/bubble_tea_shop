@@ -20,7 +20,7 @@ export default function BubbleTeaListGroup({
           items.map((item) => {
             return (
               <Grid item key={item.id} xs={12} sm={12} md={6} lg={4} xl={3}>
-                <BubbleTeaItem item={item} />
+                <BubbleTeaItem item={item} showBtnAddCart={true} />
               </Grid>
             );
           })}
