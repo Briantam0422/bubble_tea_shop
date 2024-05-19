@@ -1,8 +1,12 @@
 import { useAppSelector } from "@/store/hooks";
 import { Divider, Grid, Button } from "@mui/material";
+import { toast } from "react-toastify";
 
 export default function ShoppingCartOrderInfo() {
   const shoppingCart = useAppSelector((state) => state.shoppingCart);
+  const onClickCheckout = () => {
+    toast.success("Checkout success!");
+  };
   return (
     <>
       <Divider>Order Information</Divider>
@@ -28,7 +32,11 @@ export default function ShoppingCartOrderInfo() {
               </Grid>
             </Grid>
             <Grid item xs={12}>
-              <Button className="w-full" variant="contained" color="warning">
+              <Button
+                className="w-full"
+                variant="contained"
+                color="warning"
+                onClick={onClickCheckout}>
                 Checkout
               </Button>
             </Grid>
