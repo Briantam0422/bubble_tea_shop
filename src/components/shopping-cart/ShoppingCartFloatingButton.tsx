@@ -8,7 +8,11 @@ export default function ShoppingCartFloatingButton() {
   const [openShoppingCart, setOpenShoppingCart] = useState<boolean>(false);
   const shoppingCart = useAppSelector((state) => state.shoppingCart);
   const onClickOpenShoppingCart = () => {
-    setOpenShoppingCart(!openShoppingCart);
+    if (shoppingCart.orders.length > 0) {
+      setOpenShoppingCart(!openShoppingCart);
+    } else {
+      console.log("");
+    }
   };
   return (
     <div className="fixed bottom-10 right-10">

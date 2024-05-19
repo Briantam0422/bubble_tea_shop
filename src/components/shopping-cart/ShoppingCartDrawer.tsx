@@ -15,7 +15,7 @@ export default function ShoppingCartDrawer({
       anchor="right"
       open={openShoppingCart}
       onClose={onClickOpenShoppingCart}>
-      <div className="w-full sm:max-w-[600px] pt-10 pb-20 px-10">
+      <div className="w-full sm:max-w-[600px] sm:min-w-[500px] pt-10 pb-20 px-10">
         <Grid
           container
           justifyContent="space-between"
