@@ -2,10 +2,11 @@
 import { getBubbleTeaLabels, getBubbleTeaList } from "@/api/BubbleTea";
 import BubbleTeaList from "@/components/bubble-tea/BubbleTeaList";
 import Loading from "@/components/Loading";
+import ShoppingCartFloatingButton from "@/components/shopping-cart/ShoppingCartFloatingButton";
 import { iBubbleTea } from "@/model/BubbleTea";
 import { Grid } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Home() {
   const [bubbleTeaLabels, setBubbleTeaLabels] =
@@ -37,11 +38,14 @@ export default function Home() {
 
   return (
     <main>
-      <Grid container className="p-10">
-        {bubbleTeaLabels && bubbleTeaList && (
-          <BubbleTeaList data={bubbleTeaList} labels={bubbleTeaLabels} />
-        )}
-      </Grid>
+      <div className="relative">
+        <Grid container className="p-10">
+          {bubbleTeaLabels && bubbleTeaList && (
+            <BubbleTeaList data={bubbleTeaList} labels={bubbleTeaLabels} />
+          )}
+        </Grid>
+        <ShoppingCartFloatingButton />
+      </div>
     </main>
   );
 }
