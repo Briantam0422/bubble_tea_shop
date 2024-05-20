@@ -94,6 +94,7 @@ The [Next JS]() application (Frontend) is hosted on [Vercel](https://vercel.com/
    1. Add to cart
    2. Display Order Information
    3. Delete order
+   4. Checkout
 4. Responsive Design
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

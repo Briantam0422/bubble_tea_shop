@@ -14,11 +14,15 @@ export default function BubbleTeaList({ data, labels }: BubbleTeaListType) {
         Object.keys(data).map(function (key: string) {
           if (data[key] != undefined) {
             const label: string = labels[key];
-            const items: iBubbleTea[] = data[key];
+            const items = data[key];
             return (
-              <Grid key={key} item xs={12}>
-                <BubbleTeaListGroup items={items} label={label} />
-              </Grid>
+              <>
+                {items != undefined && (
+                  <Grid key={key} item xs={12}>
+                    <BubbleTeaListGroup items={items} label={label} />
+                  </Grid>
+                )}
+              </>
             );
           }
         })
