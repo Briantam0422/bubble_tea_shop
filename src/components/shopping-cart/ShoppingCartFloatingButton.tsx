@@ -9,11 +9,7 @@ export default function ShoppingCartFloatingButton() {
   const [openShoppingCart, setOpenShoppingCart] = useState<boolean>(false);
   const shoppingCart = useAppSelector((state) => state.shoppingCart);
   const onClickOpenShoppingCart = () => {
-    if (shoppingCart.orders.length > 0) {
-      setOpenShoppingCart(!openShoppingCart);
-    } else {
-      toast("Hey! Please select your favorite bubble tea first.");
-    }
+    setOpenShoppingCart(!openShoppingCart);
   };
   return (
     <div className="fixed bottom-10 right-10">

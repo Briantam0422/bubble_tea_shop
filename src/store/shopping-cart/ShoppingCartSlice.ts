@@ -17,8 +17,9 @@ const initialState: iShoppingCart = {
 };
 
 export function createNewOrderObject(bubbleTea: iBubbleTea){
+    const date = new Date();
     const newOrderObject: iShoppingCartOrder = {
-        id: new Date().getMilliseconds().toString(),
+        id: (date.getDate() + date.getMonth() + date.getFullYear() + date.getTime()).toString(),
         bubbleTea: bubbleTea,
         quantity: 1,
     };
@@ -38,10 +39,14 @@ export const shoppingCartSlice = createSlice({
         const order = state.orders.find((item: iShoppingCartOrder) => item.id === orderId)
         if (order) order.quantity = quantity
     },
-    deleteOrder: (state, action: PayloadAction<string>) => {
-        const orderId = action.payload
-        const orderIndex = state.orders.findIndex((item) => item.id = orderId)
-        state.orders.splice( orderIndex, -1 )
+    deleteOrder: (state, action: PayloadAction<iShoppingCartOrder>) => {
+        const order = state.orders.find((item) => item.id === action.payload.id)
+        if (order) {
+            const orderIndex = state.orders.indexOf(order)
+            if (orderIndex > -1) {
+                state.orders.splice( orderIndex, 1 )
+            }
+        }
     },
     calculateTotalPrice: (state) => {
         const orders = state.orders
