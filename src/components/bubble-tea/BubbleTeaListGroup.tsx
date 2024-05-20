@@ -14,7 +14,7 @@ export default function BubbleTeaListGroup({
   return (
     <>
       <h1 className="text-gray-500 text-xl mb-5">{label}</h1>
-      <Grid container spacing={5} rowSpacing={5}>
+      <Grid container spacing={2} rowSpacing={2}>
         {items &&
           items.length > 0 &&
           items.map((item) => {

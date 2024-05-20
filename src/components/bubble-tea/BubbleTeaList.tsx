@@ -9,7 +9,7 @@ type BubbleTeaListType = {
 
 export default function BubbleTeaList({ data, labels }: BubbleTeaListType) {
   return (
-    <Grid container spacing={5} rowSpacing={5}>
+    <Grid container spacing={2} rowSpacing={2}>
       {data && Object.keys(data).length > 0 ? (
         Object.keys(data).map(function (key: string) {
           if (data[key] != undefined) {

@@ -88,9 +88,13 @@ The [Next JS]() application (Frontend) is hosted on [Vercel](https://vercel.com/
 <!-- FEATURES -->
 ## FEATURES
 
-1. Search
+1. Search Bubble Tea
 2. Bubble Tea Display and Selection
 3. Shopping Cart
+   1. Add to cart
+   2. Display Order Information
+   3. Delete order
+4. Responsive Design
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
