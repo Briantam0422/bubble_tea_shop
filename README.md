@@ -8,7 +8,7 @@
     <strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="">View Demo</a>
+    <a href="https://bubble-tea-shop.vercel.app/">View Demo</a>
   </p>
 </div>
 
@@ -25,7 +25,6 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
@@ -40,7 +39,7 @@ A UI and frontend development of a bubble tea online shop. Users can search and 
 
 <p>App Demo</p>
 
-* URL: ""
+* URL: https://bubble-tea-shop.vercel.app/
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -81,7 +80,7 @@ A UI and frontend development of a bubble tea online shop. Users can search and 
   ```
   npm run build
   ```
-The [Next JS]() application (Frontend) is hosted on [Vercel](https://vercel.com/).
+The [Next JS](https://bubble-tea-shop.vercel.app/) application (Frontend) is hosted on [Vercel](https://vercel.com/).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
