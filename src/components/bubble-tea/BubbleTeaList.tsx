@@ -1,5 +1,5 @@
 import { iBubbleTea } from "@/model/BubbleTea";
-import { Grid } from "@mui/material";
+import { Alert, Grid } from "@mui/material";
 import BubbleTeaListGroup from "./BubbleTeaListGroup";
 
 type BubbleTeaListType = {
@@ -10,7 +10,7 @@ type BubbleTeaListType = {
 export default function BubbleTeaList({ data, labels }: BubbleTeaListType) {
   return (
     <Grid container spacing={5} rowSpacing={5}>
-      {data &&
+      {data && Object.keys(data).length > 0 ? (
         Object.keys(data).map(function (key: string) {
           if (data[key] != undefined) {
             const label: string = labels[key];
@@ -21,7 +21,14 @@ export default function BubbleTeaList({ data, labels }: BubbleTeaListType) {
               </Grid>
             );
           }
-        })}
+        })
+      ) : (
+        <div className="p-10">
+          <Alert className="w-full" variant="outlined" severity="info">
+            Oh, Sorry! Bubble tea not found. Please try another one :)
+          </Alert>
+        </div>
+      )}
     </Grid>
   );
 }

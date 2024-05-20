@@ -1,20 +1,14 @@
 import { iBubbleTea } from "@/model/BubbleTea";
 import data from "./data.json"
+import { bubbleTeaGroupByLabelsAndSort } from "@/utils/bubbleTeaHelper";
 export async function getBubbleTeaList() {
     // simulate api call
     return new Promise<Partial<Record<string, iBubbleTea[]>>>((resolve, reject)=>{
         try {
             // get data
             const bubbleTeaList: iBubbleTea[] = data
-            // group dat aby labels
-            const bubbleTeaGroupByLabels: Partial<Record<string, iBubbleTea[]>> = Object.groupBy(bubbleTeaList, ({labels}) => labels[0])
-            // sort labels
-            const sortedKeys = Object.keys(bubbleTeaGroupByLabels).sort();
-            // create new object of bubble tea data
-            const bubbleTeaListData = sortedKeys.reduce((acc: Record<string, iBubbleTea[] | undefined>, key: string) => {
-                acc[key] = bubbleTeaGroupByLabels[key];
-                return acc;
-            }, {});
+            // Group and Sort Data
+            const bubbleTeaListData = bubbleTeaGroupByLabelsAndSort(bubbleTeaList);
             resolve(bubbleTeaListData);
         } catch (e) {
             reject(e);

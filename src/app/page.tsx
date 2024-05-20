@@ -1,6 +1,7 @@
 "use client";
 import { getBubbleTeaLabels, getBubbleTeaList } from "@/api/BubbleTea";
 import BubbleTeaList from "@/components/bubble-tea/BubbleTeaList";
+import BubbleTeaSearch from "@/components/bubble-tea/BubbleTeaSearch";
 import Loading from "@/components/Loading";
 import ShoppingCartFloatingButton from "@/components/shopping-cart/ShoppingCartFloatingButton";
 import {
@@ -41,6 +42,7 @@ export default function Home() {
     <main>
       <ToastContainer position="top-center" />
       <div className="relative">
+        <BubbleTeaSearch />
         <Grid container className="p-10">
           {bubbleTeaState &&
             bubbleTeaState.bubbleTeaLabels &&
